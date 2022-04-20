@@ -1,0 +1,51 @@
+.page {
+    font-family: Arial;
+    min-height: 100vh;
+    min-width: 100vw;
+    margin-top: -10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: -10px;
+    background-image: linear-gradient(to bottom right, #6EDBC4, #F4EFC2);
+}
+
+body {
+    color: green;
+    height: 200px;
+}
+
+.button-container {
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
+
+.sign-up-button {
+    background-color: #1BD760;
+    color: white;
+    border-radius: 30px;
+    border-width: 0px;
+    padding: 15px 30px;
+    font-size: 13px;
+}
+
+.main-font-container {
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 90px;
+    font-weight: bold;
+}
+
+.button-container :hover {
+    border-width: 2px;
+    border-color: #2BE26D;
+    border-style: solid;
+    background-color: #2BE26D;
+    font-size: 14px;
+}
