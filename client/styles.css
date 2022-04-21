@@ -1,5 +1,8 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:regular,bold,italic&subset=latin,latin-ext');
+
 .page {
-    font-family: Arial;
+    font-family: 'Montserrat';
     min-height: 100vh;
     min-width: 100vw;
     margin-top: -10px;
@@ -14,7 +17,19 @@ body {
     height: 200px;
 }
 
-.button-container {
+.logo-container {
+    position: relative;
+    float: right;
+    padding-right: 80px;
+    padding-top: 30px;
+}
+
+#music-metric-logo {
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+}
+.login-button-container {
     position: fixed;
     top: 60%;
     left: 50%;
@@ -22,13 +37,47 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.sign-up-button {
+.login-button-container :hover {
+    border-width: 2px;
+    border-color: #2BE26D;
+    border-style: solid;
+    background-color: #2BE26D;
+    font-size: 14px;
+}
+
+.login-button {
     background-color: #1BD760;
     color: white;
     border-radius: 30px;
     border-width: 0px;
     padding: 15px 30px;
     font-size: 13px;
+}
+
+.get-playlists-button-container {
+    position: fixed;
+    top: 92%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
+
+.get-playlists-button {
+    background-color: black;
+    color: white;
+    border-radius: 30px;
+    border-width: 0px;
+    padding: 15px 30px;
+    font-size: 15px;
+}
+
+.get-playlists-button-container :hover {
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    background-color: black;
+    font-size: 16px;
+    color: white;
 }
 
 .main-font-container {
@@ -42,10 +91,55 @@ body {
     font-weight: bold;
 }
 
-.button-container :hover {
-    border-width: 2px;
-    border-color: #2BE26D;
-    border-style: solid;
-    background-color: #2BE26D;
-    font-size: 14px;
+.list-of-playlists {
+    background-color: #F1D6E8;
+    opacity: 1;
+    position: fixed;
+    top: 5%;
+    left: 15%;
+    height: 800px;
+    width: 450px;
+    transform: translate(-50%);
+    margin-left: 10px;
+    padding-left: 20px;
+}
+
+.playlist-energy-graph {
+    padding-left: 600px;
+    padding-right: 100px;
+    padding-top: 150px;
+}
+
+#my-playlists-header {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.playlist-element {
+    color: #3E3E3E;
+    font-size: 20px;
+}
+
+#playlists {
+    height: 75%;
+    overflow-y:auto;
+}
+
+#playlists :hover {
+    color: blue;
+}
+
+#graph-name {
+    color: blue;
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+li {
+    list-style-type: none;
+}
+
+button {
+    font-family: Montserrat;
 }

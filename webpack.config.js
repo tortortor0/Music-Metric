@@ -8,7 +8,11 @@ module.exports = {
   devServer: {
     proxy: {
       '/login': 'http://localhost:3000',
-      '/callback': 'http://localhost:3000'
+      '/callback': 'http://localhost:3000',
+      '/playlists': 'http://localhost:3000',
+      '/loginstatus': 'http://localhost:3000',
+      '/getplaylist': 'http://localhost:3000',
+      '/refresh_token': 'http://localhost:3000'
     },
     static: {
       directory: path.join(__dirname, 'dist'),
@@ -35,25 +39,10 @@ module.exports = {
           }
         }
       },
-      // {
-      //   test: /\.html$/,
-      //   use: "html-loader"
-      // },
-      /*Choose only one of the following two: if you're using 
-      plain CSS, use the first one, and if you're using a
-      preprocessor, in this case SASS, use the second one*/
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
-      // {
-      //   test: /\.scss?/,
-      //   use:[
-      //     "style-loader",
-      //     "css-loader",
-      //     "sass-loader"
-      //   ],
-      // },
     ], 
   },  
   plugins: [
