@@ -6,55 +6,40 @@ const { rmSync } = require("fs");
 const port = 3000;
 var cookieParser = require('cookie-parser');
 
-// const ReactDOMServer = require("react-dom/server");
-// const { StaticRouter } = require("react-router-dom/server");
-// const Main = require("../client/Main.jsx");
-
-const loginController = require('./controllers/loginController.js');
+const spotifyController = require('./controllers/spotifyController.js');
 const cookieController = require('./controllers/cookieController.js');
-const { restart } = require("nodemon");
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-//app.use(express.static("client"));
-//app.use('/dist', express.static(path.join(__dirname, '../dist')));
-
 app.get("/", (req, res) => {
   return res.status(200).sendFile(path.resolve(__dirname, '../index.html'));
 });
 
-app.get('/login', loginController.querySpotify, (req, res) => {
-  console.log('success in /login')
-  res.redirect(res.locals.redirect);
+app.get('/api/login', spotifyController.querySpotify, (req, res) => {
+  res.status(200).json(res.locals.spotifyString);
 });
 
-app.get('/callback', loginController.callbackSpotify, cookieController.setAuthTokenCookie, (req, res) => {
+app.get('/api/callback', spotifyController.callbackSpotify, cookieController.setAuthTokenCookie, (req, res) => {
   res.redirect("/");
 });
 
-app.get('/playlists', loginController.getPlaylists, (req, res) => {
-  //console.log('res locals playlists in route', res.locals.playlists);
-  res.status(200).json(res.locals);
+app.get('/api/playlists', spotifyController.getPlaylists, (req, res) => {
+  res.status(200).json(res.locals.playlists);
 })
 
-app.get('/loginstatus', loginController.getLoginStatus, (req, res) => {
-  return res.status(200).json(res.locals);
+app.get('/api/loginstatus', spotifyController.getLoginStatus, (req, res) => {
+  return res.status(200).json(res.locals.loginStatus);
 })
 
-app.post('/getplaylist', loginController.getPlaylist, loginController.getSongs, loginController.getEnergies, (req,res) => {
-  console.log('energies in route', res.locals.trackEnergies)
-  console.log('tracklist in route', res.locals.trackList)
-  return res.status(200).json({trackList: res.locals.trackList, 
-                              trackEnergies: res.locals.trackEnergies, 
-                              trackDanceability: res.locals.trackDanceabilities, 
-                              playlistName: res.locals.playlistName})
+app.post('/api/getplaylist', spotifyController.getPlaylist, spotifyController.getSongs, spotifyController.getSongData, (req,res) => {
+  return res.status(200).json(res.locals)
 })
 
-app.get('/refresh_token', loginController.refreshToken, cookieController.setAuthTokenCookie, function(req, res) {
-  res.status(200).send('hello')
+app.get('/api/refresh_token', spotifyController.refreshToken, cookieController.setAuthTokenCookie, function(req, res) {
+  res.status(200).send('refresh token set')
 });
 
 //GLOBAL ERROR HANDLER

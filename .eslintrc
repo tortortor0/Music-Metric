@@ -1,0 +1,6 @@
+{
+  "parser": "@babel/eslint-parser",
+  "rules": {
+    "indent": ["error", 2]
+  }
+}
